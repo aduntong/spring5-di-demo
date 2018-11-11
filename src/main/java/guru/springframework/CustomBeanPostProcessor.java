@@ -1,5 +1,6 @@
 package guru.springframework;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
  * Created by jt on 6/5/17.
  */
 @Component
+@Slf4j
 public class CustomBeanPostProcessor implements BeanPostProcessor {
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
@@ -24,7 +26,6 @@ public class CustomBeanPostProcessor implements BeanPostProcessor {
         if(bean instanceof LifeCycleDemoBean){
             ((LifeCycleDemoBean) bean).afterInit();
         }
-
         return bean;
     }
 }
